@@ -15,10 +15,12 @@ import (
 )
 
 const (
-	providerID  = "solsms"
-	channelName = "SMS"
-	maxOTPlen   = 6
-	apiURL      = "http://alerts.solutionsinfini.co/apiv2/"
+	providerID    = "solsms"
+	channelName   = "SMS"
+	addressName   = "Mobile number"
+	maxAddresslen = 10
+	maxOTPlen     = 6
+	apiURL        = "http://alerts.solutionsinfini.co/apiv2/"
 )
 
 var reNum = regexp.MustCompile(`\+?([0-9]){8,15}`)
@@ -85,6 +87,11 @@ func (s *sms) ChannelName() string {
 	return channelName
 }
 
+// AddressName returns the e-mail Provider's address name.
+func (*sms) AddressName() string {
+	return addressName
+}
+
 // Description returns help text for the SMS verification Provider.
 func (s *sms) Description() string {
 	return fmt.Sprintf(`
@@ -125,6 +132,11 @@ func (s *sms) Push(to, subject string, body []byte) error {
 		return errors.New(string(b))
 	}
 	return nil
+}
+
+// MaxAddressLen returns the maximum allowed length for the mobile number.
+func (s *sms) MaxAddressLen() int {
+	return maxAddresslen
 }
 
 // MaxOTPLen returns the maximum allowed length of the OTP value.
