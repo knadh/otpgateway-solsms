@@ -92,17 +92,22 @@ func (*sms) AddressName() string {
 	return addressName
 }
 
-// Description returns help text for the SMS verification Provider.
-func (s *sms) Description() string {
+// ChannelDesc returns help text for the SMS verification Provider.
+func (s *sms) ChannelDesc() string {
 	return fmt.Sprintf(`
-		We've sent a %d digit code in an SMS to your phone.
-		Enter it here to verify your phone number.`, maxOTPlen)
+		We've sent a %d digit code in an SMS to your mobile.
+		Enter it here to verify your mobile number.`, maxOTPlen)
+}
+
+// AddressDesc returns help text for the phone number.
+func (s *sms) AddressDesc() string {
+	return "Please enter your mobile number"
 }
 
 // ValidateAddress "validates" a phone number.
 func (s *sms) ValidateAddress(to string) error {
 	if !reNum.MatchString(to) {
-		return errors.New("invalid phone number")
+		return errors.New("invalid mobile number")
 	}
 	return nil
 }
