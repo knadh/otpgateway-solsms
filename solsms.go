@@ -20,7 +20,7 @@ const (
 	addressName   = "Mobile number"
 	maxAddresslen = 10
 	maxOTPlen     = 6
-	apiURL        = "http://alerts.solutionsinfini.co/apiv2/"
+	apiURL        = "https://api-alerts.kaleyra.com/v4/"
 )
 
 var reNum = regexp.MustCompile(`\+?([0-9]){8,15}`)
@@ -115,8 +115,8 @@ func (s *sms) ValidateAddress(to string) error {
 // Push pushes out an SMS.
 func (s *sms) Push(to, subject string, body []byte) error {
 	p := url.Values{}
-	p.Set("api", "http")
-	p.Set("workingkey", s.cfg.APIKey)
+	p.Set("method", "sms")
+	p.Set("api_key", s.cfg.APIKey)
 	p.Set("sender", s.cfg.Sender)
 	p.Set("to", to)
 	p.Set("message", string(body))
