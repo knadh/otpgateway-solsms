@@ -14,4 +14,4 @@ template_type = "text"
 config = '{"APIKey": "YourSolutionsInfiniKey", "Sender": "YourID"}'
 ```
 
-- Run `./otpgateway --provider solsms.prov`
+- Run `./otpgateway --prov solsms.prov`
