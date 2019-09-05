@@ -1,0 +1,19 @@
+# .goreleaser.yml
+builds:
+  - binary: solsms.prov
+    main: main.go
+    goos:
+      - darwin
+      - linux
+    goarch:
+      - amd64
+
+before:
+  hooks:
+  - make build
+
+archive:
+  format: tar.gz
+  files:
+    - sms.txt
+    - README.md
