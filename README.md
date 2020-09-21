@@ -1,3 +1,5 @@
+<a href="https://zerodha.tech"><img src="https://zerodha.tech/static/images/github-badge.svg" align="right" /></a>
+
 ## Solutions Infini SMS provider for [otpgateway](https://github.com/knadh/otpgateway).
 This is a Provider plugin for [otpgateway](https://github.com/knadh/otpgateway) that sends SMSes using [SolutionsInfini](https://www.solutionsinfini.com), an Indian SMS gateway.
 
